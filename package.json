@@ -1,6 +1,6 @@
 {
   "name": "kinetic-value",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Tiny and performant class for tracking the instantaneous velocity of a continuously changing value.",
   "type": "module",
   "source": "src/index.ts",
