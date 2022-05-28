@@ -27,7 +27,7 @@ setInterval(() => {
 
 ## API Reference
 
-### new KineticValue(initialValue: number)
+### new KineticValue(initialValue: number, now?: number)
 
 Creates a new kinetic value.
 
@@ -35,7 +35,7 @@ Creates a new kinetic value.
 
 Returns the current tracked value.
 
-### set(value: number)
+### set(value: number, now?: number)
 
 Updates the tracked value.
 
