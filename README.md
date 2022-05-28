@@ -27,9 +27,11 @@ setInterval(() => {
 
 ## API Reference
 
-### new KineticValue(initialValue: number, now?: number)
+### new KineticValue(initialValue: number, timeout?: number, now?: number)
 
 Creates a new kinetic value.
+
+`timeout` is the number of milliseconds to wait until the value is considered stopped. Default 50.
 
 ### get()
 
@@ -42,6 +44,10 @@ Updates the tracked value.
 ### velocity()
 
 Returns the instantaneous velocity of the tracked value in units / second.
+
+### stop()
+
+Resets the velocity to 0.
 
 ## Author
 

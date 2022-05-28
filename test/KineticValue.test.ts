@@ -40,7 +40,7 @@ describe("velocity", () => {
 
   it("returns the instantaneous velocity", () => {
     let now = performance.now();
-    const a = new KineticValue(0, now);
+    const a = new KineticValue(0, 50, now);
 
     now += 1000;
     a.set(200, now);
@@ -53,5 +53,31 @@ describe("velocity", () => {
     now += 100;
     a.set(401, now);
     expect(a.velocity()).toBeCloseTo(10);
+  });
+
+  it("returns 0 after timeout", async () => {
+    let now = performance.now();
+    const a = new KineticValue(0, 50, now);
+
+    now += 1000;
+    a.set(200, now);
+    expect(a.velocity()).toBeCloseTo(200);
+
+    // wait 100ms
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    expect(a.velocity()).toBe(0);
+  });
+
+  it("returns 0 after calling stop", () => {
+    let now = performance.now();
+    const a = new KineticValue(0, 50, now);
+
+    now += 1000;
+    a.set(200, now);
+    expect(a.velocity()).toBeCloseTo(200);
+
+    a.stop();
+    expect(a.velocity()).toBe(0);
   });
 });
