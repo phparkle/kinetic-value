@@ -25,8 +25,8 @@ export default class KineticValue {
     this.t = now;
 
     this.a = true;
-    clearTimeout(this.id);
-    setTimeout(this.stop, this.e);
+    window.clearTimeout(this.id);
+    this.id = window.setTimeout(this.stop, this.e);
   }
 
   public velocity() {
