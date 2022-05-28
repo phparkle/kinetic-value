@@ -1,7 +1,7 @@
 {
   "name": "kinetic-value",
   "version": "0.0.1",
-  "description": "Track the state and velocity of a number.",
+  "description": "Tiny and performant class for tracking the instantaneous velocity of a continuously changing value.",
   "type": "module",
   "source": "src/index.ts",
   "scripts": {
