@@ -1,1 +1,1 @@
-export * as default from './KineticValue';
+export { default } from './KineticValue';

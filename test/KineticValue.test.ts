@@ -1,4 +1,4 @@
-import KineticValue from "../src/KineticValue";
+import KineticValue from "../src";
 
 describe("get", () => {
   it("returns the initial value", () => {
