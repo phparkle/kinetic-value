@@ -4,6 +4,14 @@
   "description": "Tiny and performant class for tracking the instantaneous velocity of a continuously changing value.",
   "type": "module",
   "source": "src/index.ts",
+  "main": "dist/kinetic-value.cjs",
+  "umd:main": "dist/kinetic-value.umd.js",
+  "module": "dist/kinetic-value.esm.js",
+  "exports": {
+    "require": "./dist/kinetic-value.cjs",
+    "default": "./dist/kinetic-value.modern.js"
+  },
+  "types": "dist/index.d.ts",
   "scripts": {
     "watch": "rimraf dist && microbundle watch",
     "build": "rimraf dist && microbundle",
