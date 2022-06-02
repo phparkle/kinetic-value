@@ -18,7 +18,7 @@ const kv = new KineticValue(0);
 
 setInterval(() => {
   // Increment by 50 every 100ms
-  kv.set(kv.get() + 10);
+  kv.set(kv.get() + 50);
 
   // Velocity will be about 500
   console.log(kv.velocity());
