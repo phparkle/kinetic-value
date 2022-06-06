@@ -39,43 +39,35 @@ describe("velocity", () => {
   });
 
   it("returns the instantaneous velocity", () => {
-    let now = performance.now();
-    const a = new KineticValue(0, 50, now);
+    let t = performance.now();
+    let y = 0;
+    const a = new KineticValue(0, 50, t);
 
-    now += 1000;
-    a.set(200, now);
-    expect(a.velocity()).toBeCloseTo(200);
-
-    now += 500;
-    a.set(400, now);
-    expect(a.velocity()).toBeCloseTo(400);
-
-    now += 100;
-    a.set(401, now);
-    expect(a.velocity()).toBeCloseTo(10);
+    for (let i = 0; i < 50; i++) {
+      t += 20;
+      y += 10;
+      a.set(y, t);
+      expect(a.velocity(t)).toBeCloseTo(500);
+    }
   });
 
-  it("returns 0 after timeout", async () => {
-    let now = performance.now();
-    const a = new KineticValue(0, 50, now);
+  it("returns 0 after timeout", () => {
+    let t = performance.now();
+    const a = new KineticValue(0, 50, t);
 
-    now += 1000;
-    a.set(200, now);
-    expect(a.velocity()).toBeCloseTo(200);
-
-    // wait 100ms
-    await new Promise((resolve) => setTimeout(resolve, 100));
-
-    expect(a.velocity()).toBe(0);
+    t += 20;
+    a.set(10, t);
+    expect(a.velocity(t)).toBeCloseTo(500);
+    expect(a.velocity(t + 60)).toBe(0);
   });
 
   it("returns 0 after calling stop", () => {
-    let now = performance.now();
-    const a = new KineticValue(0, 50, now);
+    let t = performance.now();
+    const a = new KineticValue(0, 50, t);
 
-    now += 1000;
-    a.set(200, now);
-    expect(a.velocity()).toBeCloseTo(200);
+    t += 20;
+    a.set(10, t);
+    expect(a.velocity()).toBeCloseTo(500);
 
     a.stop();
     expect(a.velocity()).toBe(0);

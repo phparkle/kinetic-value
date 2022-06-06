@@ -17,12 +17,12 @@ import KineticValue from "kinetic-value";
 const kv = new KineticValue(0);
 
 setInterval(() => {
-  // Increment by 50 every 100ms
+  // Increment by 10 every 20ms
   kv.set(kv.get() + 50);
 
   // Velocity will be about 500
   console.log(kv.velocity());
-}, 100);
+}, 20);
 ```
 
 ## API Reference
@@ -41,7 +41,7 @@ Returns the current tracked value.
 
 Updates the tracked value.
 
-### velocity()
+### velocity(now?: number)
 
 Returns the instantaneous velocity of the tracked value in units / second.
 

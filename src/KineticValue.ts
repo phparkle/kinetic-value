@@ -4,12 +4,9 @@ export default class KineticValue {
   private t: number = 0;
   private dt: number = 0;
   private e: number;
-  private id: number = 0;
-  private a: boolean;
 
   constructor(initialValue: number, timeout: number = 50, now = performance.now()) {
     this.e = timeout;
-    this.a = false;
     this.set(initialValue, now);
   }
 
@@ -18,24 +15,21 @@ export default class KineticValue {
   }
 
   public set(value: number, now = performance.now()) {
-    this.dy = this.a ? value - this.y : 0;
+    this.dy = value - this.y;
     this.y = value;
     
-    this.dt = this.a ? now - this.t : 0;
+    this.dt = now - this.t;
     this.t = now;
 
-    this.a = true;
-    window.clearTimeout(this.id);
-    this.id = window.setTimeout(this.stop, this.e);
+    if (this.dt > this.e) this.dt = 0;
   }
 
-  public velocity() {
-    return this.dt ? 1000 * this.dy / this.dt : 0;
+  public velocity(now = performance.now()) {
+    if (!this.dt || now - this.t > this.e) return 0;
+    return 1000 * this.dy / this.dt;
   }
 
   public stop = () => {
-    this.dy = 0;
     this.dt = 0;
-    this.a = false;
   }
 }
