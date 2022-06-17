@@ -28,11 +28,11 @@
   },
   "homepage": "https://github.com/phparkle/kinetic-value#readme",
   "devDependencies": {
-    "@types/jest": "^27.5.1",
-    "jest": "^28.1.0",
+    "@types/jest": "^27.5.2",
+    "jest": "^28.1.1",
     "microbundle": "^0.15.0",
     "rimraf": "^3.0.2",
-    "ts-jest": "^28.0.3"
+    "ts-jest": "^28.0.5"
   },
   "jest": {
     "preset": "ts-jest"
